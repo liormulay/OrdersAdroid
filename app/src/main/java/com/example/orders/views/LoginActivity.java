@@ -1,18 +1,19 @@
 package com.example.orders.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.example.orders.R;
 import com.example.orders.model.User;
 import com.example.orders.viewmodels.LoginViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     private AppCompatButton loginButton;
 
     private LoginViewModel loginViewModel;
+
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +52,9 @@ public class LoginActivity extends AppCompatActivity {
             }
             if (username != null && password != null) {
                 User user = new User(username, password);
-                loginViewModel.onLoginClicked(user, this)
+                compositeDisposable.add(loginViewModel.onLoginClicked(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(() -> startActivity(new Intent(LoginActivity.this, HomePageActivity.class)));
+                        .subscribe(() -> startActivity(new Intent(LoginActivity.this, HomePageActivity.class))));
             }
         });
     }
@@ -60,5 +63,11 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         loginButton = findViewById(R.id.login_button);
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
     }
 }
