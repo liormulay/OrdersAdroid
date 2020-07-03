@@ -3,6 +3,7 @@ package com.example.orders.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -14,6 +15,8 @@ import com.example.orders.viewmodels.LoginViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -54,7 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User(username, password);
                 compositeDisposable.add(loginViewModel.onLoginClicked(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(() -> startActivity(new Intent(LoginActivity.this, HomePageActivity.class))));
+                        .subscribe(() -> LoginActivity.this.startActivity(new Intent(LoginActivity.this, HomePageActivity.class)),
+                                throwable -> Toast.makeText(LoginActivity.this,throwable.getMessage(),Toast.LENGTH_LONG).show()));
             }
         });
     }
