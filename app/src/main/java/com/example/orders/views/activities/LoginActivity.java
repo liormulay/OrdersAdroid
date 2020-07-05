@@ -1,4 +1,4 @@
-package com.example.orders.views;
+package com.example.orders.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +15,6 @@ import com.example.orders.viewmodels.LoginViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 
 public class LoginActivity extends AppCompatActivity {
 

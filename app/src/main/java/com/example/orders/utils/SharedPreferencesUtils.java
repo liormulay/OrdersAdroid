@@ -20,7 +20,8 @@ public class SharedPreferencesUtils {
 
     public static String retrieveToken(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(ORDERS, Context.MODE_PRIVATE);
-        return preferences.getString(TOKEN, null);
+        String BEARER = "Bearer ";
+        return BEARER + preferences.getString(TOKEN, null);
     }
 
     public static void saveRole(Context context, String role) {

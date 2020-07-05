@@ -1,9 +1,10 @@
-package com.example.orders.views;
+package com.example.orders.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.orders.R;
@@ -24,6 +25,11 @@ public class HomePageActivity extends AppCompatActivity {
         findViews();
         String username = SharedPreferencesUtils.retrieveUsername(this);
         welcomeTextView.setText(String.format("%s %s", getString(R.string.welcome), username));
+        initActions();
+    }
+
+    private void initActions() {
+        seeOrdersButton.setOnClickListener(v -> startActivity(new Intent(HomePageActivity.this, OrdersActivity.class)));
     }
 
     private void findViews() {
