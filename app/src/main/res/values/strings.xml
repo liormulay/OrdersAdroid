@@ -4,4 +4,8 @@
     <string name="password">Password</string>
     <string name="login_in">Log In</string>
     <string name="sign_up">Sign Up</string>
+    <string name="products">Products</string>
+    <string name="make_order">make order</string>
+    <string name="see_orders">see orders</string>
+    <string name="welcome">Welcome</string>
 </resources>

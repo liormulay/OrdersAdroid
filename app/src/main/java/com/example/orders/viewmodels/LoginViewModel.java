@@ -21,7 +21,8 @@ public class LoginViewModel extends ViewModel {
                 .subscribeOn(Schedulers.io())
                 .flatMapCompletable(jwtTokenResponse -> {
                     SharedPreferencesUtils.saveToken(context, jwtTokenResponse.getToken());
-                    SharedPreferencesUtils.saveRole(context, jwtTokenResponse.getRole());
+                    SharedPreferencesUtils.saveUsername(context, jwtTokenResponse.getUser().getUserName());
+                    SharedPreferencesUtils.saveRole(context, jwtTokenResponse.getUser().getRole());
                     return Completable.complete();
                 });
     }
