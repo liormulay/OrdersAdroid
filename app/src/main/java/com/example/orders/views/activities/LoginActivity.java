@@ -3,11 +3,13 @@ package com.example.orders.views.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.core.widget.ContentLoadingProgressBar;
 
 import com.example.orders.R;
 import com.example.orders.model.User;
@@ -23,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private AppCompatEditText passwordEditText;
 
     private AppCompatButton loginButton;
+
+    private ContentLoadingProgressBar progressBar;
 
     private LoginViewModel loginViewModel;
 
@@ -52,11 +56,15 @@ public class LoginActivity extends AppCompatActivity {
                 passwordEditText.setError("password is required");
             }
             if (username != null && password != null) {
+                progressBar.setVisibility(View.VISIBLE);
                 User user = new User(username, password);
                 compositeDisposable.add(loginViewModel.onLoginClicked(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(() -> LoginActivity.this.startActivity(new Intent(LoginActivity.this, HomePageActivity.class)),
-                                throwable -> Toast.makeText(LoginActivity.this,throwable.getMessage(),Toast.LENGTH_LONG).show()));
+                                throwable -> {
+                                    Toast.makeText(LoginActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+                                    progressBar.setVisibility(View.GONE);
+                                }));
             }
         });
     }
@@ -65,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         loginButton = findViewById(R.id.login_button);
+        progressBar = findViewById(R.id.progress_circular);
     }
 
     @Override

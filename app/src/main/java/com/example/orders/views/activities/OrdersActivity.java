@@ -1,10 +1,12 @@
 package com.example.orders.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridLayout;
 
 import com.example.orders.R;
@@ -22,6 +24,8 @@ public class OrdersActivity extends AppCompatActivity {
 
     private RecyclerView ordersRecyclerView;
 
+    private ContentLoadingProgressBar progressBar;
+
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
@@ -31,6 +35,7 @@ public class OrdersActivity extends AppCompatActivity {
         ordersViewModel = new OrdersViewModel();
         ordersAdapter = new OrdersAdapter(this);
         ordersRecyclerView = findViewById(R.id.orders_recyclerView);
+        progressBar = findViewById(R.id.progress_circular);
         initOrdersRecycler();
         getOrders();
     }
@@ -38,7 +43,10 @@ public class OrdersActivity extends AppCompatActivity {
     protected void getOrders() {
         compositeDisposable.add(ordersViewModel.getUserOrders(this)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(orders -> ordersAdapter.setOrders(orders)));
+                .subscribe(orders -> {
+                    ordersAdapter.setOrders(orders);
+                    progressBar.setVisibility(View.GONE);
+                }));
     }
 
     protected void initOrdersRecycler() {
