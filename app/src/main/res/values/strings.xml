@@ -9,4 +9,9 @@
     <string name="see_orders">see orders</string>
     <string name="welcome">Welcome</string>
     <string name="your_orders">Your orders</string>
+    <string name="quantity">quantity</string>
+    <string name="x">X</string>
+    <string name="price">price</string>
+    <string name="equal">=</string>
+    <string name="total">total</string>
 </resources>

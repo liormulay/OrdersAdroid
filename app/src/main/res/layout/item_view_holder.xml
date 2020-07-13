@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/country_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/product_name_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/productImageView"
+                app:layout_constraintLeft_toLeftOf="@+id/productImageView"
+                app:layout_constraintTop_toBottomOf="@+id/productImageView"
+                tools:text="Banana" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/productImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:mipmap/sym_def_app_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/quantity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_item_title"
+                android:text="@string/quantity"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/quantity_textView"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="0.393"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/quantity_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/quantity_title"
+                app:layout_constraintLeft_toLeftOf="@+id/quantity_title"
+                app:layout_constraintTop_toBottomOf="@+id/quantity_title"
+                tools:text="10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/multiply_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/x"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity_textView"
+                app:layout_constraintLeft_toRightOf="@+id/quantity_title" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_item_title"
+                android:text="@string/price"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity_title"
+                app:layout_constraintLeft_toRightOf="@+id/multiply_textView"
+                app:layout_constraintTop_toTopOf="@+id/quantity_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintRight_toRightOf="@+id/price_title"
+                app:layout_constraintLeft_toLeftOf="@+id/price_title"
+                app:layout_constraintTop_toBottomOf="@+id/price_title"
+                tools:text="35" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/equal_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/equal"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/price_textView"
+                app:layout_constraintLeft_toRightOf="@+id/price_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_item_title"
+                android:text="@string/total"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity_title"
+                app:layout_constraintLeft_toRightOf="@+id/equal_textView"
+                app:layout_constraintTop_toTopOf="@+id/quantity_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/total_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/item_details_text_size"
+                app:layout_constraintRight_toRightOf="@+id/total_title"
+                app:layout_constraintLeft_toLeftOf="@+id/total_title"
+                app:layout_constraintTop_toBottomOf="@+id/total_title"
+                android:textStyle="bold"
+                tools:text="350" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

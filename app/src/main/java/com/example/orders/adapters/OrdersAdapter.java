@@ -13,14 +13,20 @@ import com.example.orders.views.viewholders.OrderViewHolder;
 
 import java.util.List;
 
+import io.reactivex.subjects.BehaviorSubject;
+
+
 public class OrdersAdapter extends RecyclerView.Adapter<OrderViewHolder> {
 
     private Context context;
 
     private List<Order> orders;
 
-    public OrdersAdapter(Context context) {
+    private BehaviorSubject<Order> clickedSubject;
+
+    public OrdersAdapter(Context context, BehaviorSubject<Order> clickedSubject) {
         this.context = context;
+        this.clickedSubject = clickedSubject;
     }
 
     public void setOrders(List<Order> orders) {
@@ -31,7 +37,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrderViewHolder> {
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new OrderViewHolder(LayoutInflater.from(context).inflate(R.layout.order_view_holder, parent, false));
+        return new OrderViewHolder(LayoutInflater.from(context).inflate(R.layout.order_view_holder, parent, false), clickedSubject);
     }
 
     @Override

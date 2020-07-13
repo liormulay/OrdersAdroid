@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="home_page_button_size">100dp</dimen>
+    <dimen name="item_details_text_size">20sp</dimen>
+    <dimen name="padding_item_title">5dp</dimen>
 </resources>

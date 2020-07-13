@@ -9,7 +9,7 @@ public class NetworkClient {
 
     private static Retrofit retrofit;
 
-    private static final String BASE_URL = "http://10.0.0.10:8080/";
+    private static final String BASE_URL = "http://10.0.0.9:8080/";
 
     private static Retrofit getRetrofit() {
         if (retrofit == null) {
