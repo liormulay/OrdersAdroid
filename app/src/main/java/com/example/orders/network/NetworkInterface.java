@@ -1,5 +1,6 @@
 package com.example.orders.network;
 
+import com.example.orders.model.ItemResponse;
 import com.example.orders.model.JwtTokenResponse;
 import com.example.orders.model.Order;
 import com.example.orders.model.User;
@@ -18,4 +19,7 @@ public interface NetworkInterface {
 
     @GET("/orders")
     Single<List<Order>> getOrders(@Header("Authorization") String token);
+
+    @GET("/request_items")
+    Single<List<ItemResponse>> getProducts(@Header("Authorization") String token);
 }

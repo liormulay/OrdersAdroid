@@ -30,6 +30,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     private void initActions() {
         seeOrdersButton.setOnClickListener(v -> startActivity(new Intent(HomePageActivity.this, OrdersActivity.class)));
+        makeOrderButton.setOnClickListener(v -> startActivity(new Intent(HomePageActivity.this, MakeOrderActivity.class)));
     }
 
     private void findViews() {
