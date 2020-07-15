@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.model.ItemResponse;
+import com.example.orders.utils.FormatUtils;
 import com.squareup.picasso.Picasso;
 
 import java.math.BigDecimal;
@@ -41,9 +42,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         productNameTextView.setText(itemResponse.getProductName());
         quantityTextView.setText(String.valueOf(itemResponse.getQuantity()));
         priceTextView.setText(String.valueOf(itemResponse.getPrice()));
-        String total = String.valueOf(itemResponse.getQuantity() * itemResponse.getPrice());
-        BigDecimal bigDecimal = new BigDecimal(total);
-        bigDecimal = bigDecimal.setScale(2, RoundingMode.HALF_DOWN);
-        totalTextView.setText(String.valueOf(bigDecimal.floatValue()));
+        totalTextView.setText(FormatUtils.getRoundPrice(itemResponse.getQuantity() * itemResponse.getPrice()));
     }
 }

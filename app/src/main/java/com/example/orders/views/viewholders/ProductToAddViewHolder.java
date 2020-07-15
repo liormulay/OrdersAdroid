@@ -13,10 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.model.ItemResponse;
+import com.example.orders.utils.FormatUtils;
 import com.google.common.base.Strings;
 import com.squareup.picasso.Picasso;
 
 public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
+
+    private AppCompatTextView priceTextView;
 
     private AppCompatImageView productImageView;
 
@@ -30,8 +33,11 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
 
     private ItemResponse itemResponse;
 
+    private String prevText;
+
     public ProductToAddViewHolder(@NonNull View itemView) {
         super(itemView);
+        priceTextView = itemView.findViewById(R.id.product_price_textView);
         productImageView = itemView.findViewById(R.id.productImageView);
         productNameTextView = itemView.findViewById(R.id.product_name_textView);
         plusButton = itemView.findViewById(R.id.plus_button);
@@ -41,6 +47,7 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(@org.jetbrains.annotations.NotNull ItemResponse itemResponse) {
         this.itemResponse = itemResponse;
+        priceTextView.setText(FormatUtils.getRoundPrice(itemResponse.getPrice()));
         Picasso.get().load(itemResponse.getImageUrl()).into(productImageView);
         productNameTextView.setText(itemResponse.getProductName());
         setListeners();
@@ -49,7 +56,7 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
     private void setListeners() {
         plusButton.setOnClickListener(v -> {
             Editable text = quantityEditText.getText();
-            int quantity = text == null ? 0 : Integer.parseInt(text.toString());
+            int quantity = (text == null || Strings.isNullOrEmpty(text.toString())) ? 0 : Integer.parseInt(text.toString());
             ++quantity;
             quantityEditText.setText(String.valueOf(quantity));
         });
@@ -86,8 +93,12 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
         });
 
         quantityEditText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus && quantityEditText.getText() == null || Strings.isNullOrEmpty(quantityEditText.getText().toString())) {
-                quantityEditText.setText("0");
+            String text = quantityEditText.getText().toString();
+            if (hasFocus) {
+                this.prevText = text;
+                quantityEditText.setText("");
+            } else if (Strings.isNullOrEmpty(text)) {
+                quantityEditText.setText(prevText);
             }
         });
     }
