@@ -17,6 +17,8 @@ import com.example.orders.utils.FormatUtils;
 import com.google.common.base.Strings;
 import com.squareup.picasso.Picasso;
 
+import io.reactivex.subjects.BehaviorSubject;
+
 public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
 
     private AppCompatTextView priceTextView;
@@ -35,7 +37,11 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
 
     private String prevText;
 
-    public ProductToAddViewHolder(@NonNull View itemView) {
+    private int prevQuantity;
+
+    private BehaviorSubject<Float> addToTotal;
+
+    public ProductToAddViewHolder(@NonNull View itemView, BehaviorSubject<Float> addToTotal) {
         super(itemView);
         priceTextView = itemView.findViewById(R.id.product_price_textView);
         productImageView = itemView.findViewById(R.id.productImageView);
@@ -43,6 +49,7 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
         plusButton = itemView.findViewById(R.id.plus_button);
         minusButton = itemView.findViewById(R.id.minus_button);
         quantityEditText = itemView.findViewById(R.id.quantity_editText);
+        this.addToTotal = addToTotal;
     }
 
     public void bindData(@org.jetbrains.annotations.NotNull ItemResponse itemResponse) {
@@ -71,7 +78,11 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
         quantityEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                String text = s.toString();
+                if (Strings.isNullOrEmpty(text)) {
+                    return;
+                }
+                prevQuantity = Integer.parseInt(text);
             }
 
             @Override
@@ -89,6 +100,7 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
                 itemResponse.setQuantity(quantity);
                 boolean enableMinus = quantity > 0;
                 minusButton.setEnabled(enableMinus);
+                addToTotal.onNext((quantity - prevQuantity) * itemResponse.getPrice());
             }
         });
 

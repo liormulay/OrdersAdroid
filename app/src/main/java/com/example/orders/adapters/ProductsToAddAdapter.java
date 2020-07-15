@@ -13,11 +13,16 @@ import com.example.orders.views.viewholders.ProductToAddViewHolder;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.subjects.BehaviorSubject;
+
 public class ProductsToAddAdapter extends RecyclerView.Adapter<ProductToAddViewHolder> {
 
     private Context context;
 
     private List<ItemResponse> items;
+
+    private BehaviorSubject<Float> addToTotal = BehaviorSubject.create();
 
     public ProductsToAddAdapter(Context context) {
         this.context = context;
@@ -28,10 +33,14 @@ public class ProductsToAddAdapter extends RecyclerView.Adapter<ProductToAddViewH
         notifyDataSetChanged();
     }
 
+    public Observable<Float> getAddToTotal() {
+        return addToTotal.hide();
+    }
+
     @NonNull
     @Override
     public ProductToAddViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ProductToAddViewHolder(LayoutInflater.from(context).inflate(R.layout.product_to_add, parent, false));
+        return new ProductToAddViewHolder(LayoutInflater.from(context).inflate(R.layout.product_to_add, parent, false), addToTotal);
     }
 
     @Override
