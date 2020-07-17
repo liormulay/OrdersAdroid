@@ -5,8 +5,10 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.AndroidException;
+import android.widget.Toast;
 
 import com.example.orders.R;
 import com.example.orders.adapters.ProductsToAddAdapter;
@@ -18,6 +20,9 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class MakeOrderActivity extends AppCompatActivity {
 
+    private static final String ITEMS = "items";
+    private static final String TOTAL = "total";
+
     private MakeOrderViewModel makeOrderViewModel = new MakeOrderViewModel();
 
     private ProductsToAddAdapter productsToAddAdapter;
@@ -28,6 +33,8 @@ public class MakeOrderActivity extends AppCompatActivity {
 
     private AppCompatTextView totalTextView;
 
+    private AppCompatTextView submitTextView;
+
     private float total = 0.0f;
 
 
@@ -35,12 +42,30 @@ public class MakeOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_order);
-        productsRecycler = findViewById(R.id.products_recycler);
-        totalTextView = findViewById(R.id.totalTextView);
+        findViews();
         productsToAddAdapter = new ProductsToAddAdapter(this);
         initProductsRecycler();
         getProducts();
         updateTotal();
+        submitTextView.setOnClickListener(v -> onSubmitClicked());
+
+    }
+
+    private void onSubmitClicked() {
+        compositeDisposable.add(makeOrderViewModel.onSubmit()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(itemResponses -> {
+                    Intent intent = new Intent(MakeOrderActivity.this, CheckoutActivity.class);
+                    intent.putExtra(ITEMS, itemResponses);
+                    intent.putExtra(TOTAL, total);
+                    startActivity(intent);
+                }, throwable -> Toast.makeText(MakeOrderActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show()));
+    }
+
+    private void findViews() {
+        productsRecycler = findViewById(R.id.products_recycler);
+        totalTextView = findViewById(R.id.totalTextView);
+        submitTextView = findViewById(R.id.make_orderTextView);
     }
 
     private void updateTotal() {
