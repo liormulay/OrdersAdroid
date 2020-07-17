@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".views.activities.CheckoutActivity">
 
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/activity_make_order"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

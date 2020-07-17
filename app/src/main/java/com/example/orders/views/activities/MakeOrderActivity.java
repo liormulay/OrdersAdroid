@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AndroidException;
 import android.widget.Toast;
 
 import com.example.orders.R;
@@ -20,8 +19,8 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class MakeOrderActivity extends AppCompatActivity {
 
-    private static final String ITEMS = "items";
-    private static final String TOTAL = "total";
+    public static final String ITEMS = "items";
+    public static final String TOTAL = "total";
 
     private MakeOrderViewModel makeOrderViewModel = new MakeOrderViewModel();
 
@@ -65,7 +64,7 @@ public class MakeOrderActivity extends AppCompatActivity {
     private void findViews() {
         productsRecycler = findViewById(R.id.products_recycler);
         totalTextView = findViewById(R.id.totalTextView);
-        submitTextView = findViewById(R.id.make_orderTextView);
+        submitTextView = findViewById(R.id.submit);
     }
 
     private void updateTotal() {

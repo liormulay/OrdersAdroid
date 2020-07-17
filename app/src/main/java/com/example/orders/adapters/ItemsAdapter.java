@@ -25,6 +25,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
     public void setItems(List<ItemResponse> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
 
     @NonNull
