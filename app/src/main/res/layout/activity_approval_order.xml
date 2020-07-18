@@ -7,14 +7,15 @@
     tools:context=".views.activities.ApprovalOrderActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView"
+        android:id="@+id/message_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        app:layout_constraintVertical_chainStyle="spread"
         tools:text="Your order will arrive at 11/08/20220"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         android:textSize="20sp"
         android:textAlignment="center"/>
 
@@ -22,21 +23,21 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        app:layout_constraintBottom_toTopOf="@+id/homepage_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:srcCompat="@mipmap/ic_approved" />
+        app:layout_constraintTop_toBottomOf="@+id/message_textView"
+        app:srcCompat="@mipmap/ic_approved" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/homepage_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
         android:text="@string/go_to_home_page"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintWidth_percent="0.8" />
 </androidx.constraintlayout.widget.ConstraintLayout>
