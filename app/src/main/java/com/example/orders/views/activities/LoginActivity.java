@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.ContentLoadingProgressBar;
 
 import com.example.orders.R;
@@ -25,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     private AppCompatEditText passwordEditText;
 
     private AppCompatButton loginButton;
+
+    private AppCompatTextView signUpTextView;
 
     private ContentLoadingProgressBar progressBar;
 
@@ -67,6 +70,8 @@ public class LoginActivity extends AppCompatActivity {
                                 }));
             }
         });
+
+        signUpTextView.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SingUpActivity.class)));
     }
 
     private void findViews() {
@@ -74,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password_edit_text);
         loginButton = findViewById(R.id.login_button);
         progressBar = findViewById(R.id.progress_circular);
+        signUpTextView = findViewById(R.id.sign_up_text_view);
     }
 
     @Override

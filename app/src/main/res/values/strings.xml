@@ -17,4 +17,6 @@
     <string name="make_an_order">MAKE AN ORDER</string>
     <string name="buy">BUY</string>
     <string name="go_to_home_page">Go to home page</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="submit">submit</string>
 </resources>
