@@ -51,17 +51,17 @@ public class LoginActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(usernameEditText.getText())) {
                 username = usernameEditText.getText().toString();
             } else {
-                usernameEditText.setError("username is required");
+                usernameEditText.setError(getString(R.string.required_fild_error_message));
             }
             if (!TextUtils.isEmpty(passwordEditText.getText())) {
                 password = passwordEditText.getText().toString();
             } else {
-                passwordEditText.setError("password is required");
+                passwordEditText.setError(getString(R.string.required_fild_error_message));
             }
             if (username != null && password != null) {
                 progressBar.setVisibility(View.VISIBLE);
                 User user = new User(username, password);
-                compositeDisposable.add(loginViewModel.onLoginClicked(user, this)
+                compositeDisposable.add(loginViewModel.doLogin(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(() -> LoginActivity.this.startActivity(new Intent(LoginActivity.this, HomePageActivity.class)),
                                 throwable -> {

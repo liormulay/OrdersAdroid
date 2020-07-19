@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 public class LoginViewModel extends ViewModel {
 
 
-    public Completable onLoginClicked(User user, Context context) {
+    public Completable doLogin(User user, Context context) {
         return NetworkClient.getNetworkInterface()
                 .authenticate(user)
                 .subscribeOn(Schedulers.io())

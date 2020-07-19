@@ -13,8 +13,17 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface NetworkInterface {
+
+
+    @GET("/is_username_exist/{username}")
+    Single<Boolean> isUsernameExist(@Path("username") String username);
+
+    @POST("/register")
+    Single<User> register(@Body User user);
+
     @POST("/authenticate")
     Single<JwtTokenResponse> authenticate(@Body User user);
 
@@ -26,4 +35,5 @@ public interface NetworkInterface {
 
     @POST("/order")
     Single<Order> requestBuy(@Header("Authorization") String token, @Body ItemsRequestModel itemsRequestModel);
+
 }
