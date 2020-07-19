@@ -63,7 +63,11 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User(username, password);
                 compositeDisposable.add(loginViewModel.doLogin(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(() -> LoginActivity.this.startActivity(new Intent(LoginActivity.this, HomePageActivity.class)),
+                        .subscribe(() -> {
+                                    Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                                    LoginActivity.this.startActivity(intent);
+                                    finishAffinity();
+                                },
                                 throwable -> {
                                     Toast.makeText(LoginActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);

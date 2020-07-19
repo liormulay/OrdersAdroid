@@ -61,7 +61,10 @@ public class SingUpActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             compositeDisposable.add(signUpViewModel.registerAndLogin(new User(username, password), this)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(() -> SingUpActivity.this.startActivity(new Intent(SingUpActivity.this, HomePageActivity.class)),
+                    .subscribe(() -> {
+                                SingUpActivity.this.startActivity(new Intent(SingUpActivity.this, HomePageActivity.class));
+                                finishAffinity();
+                            },
                             throwable -> {
                                 Toast.makeText(SingUpActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
