@@ -1,11 +1,10 @@
 package com.example.orders.views.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.orders.R;
 import com.example.orders.model.Order;
@@ -15,7 +14,7 @@ import java.util.Locale;
 
 import static com.example.orders.views.activities.OrdersActivity.ORDER;
 
-public class ApprovalOrderActivity extends AppCompatActivity {
+public class ApprovalOrderActivity extends MenuActivity {
 
     private AppCompatTextView messageTextView;
 
@@ -35,6 +34,9 @@ public class ApprovalOrderActivity extends AppCompatActivity {
                 messageTextView.setText(String.format("Your order will arrive at %s", dateFormat.format(order.getShipDate())));
             }
         }
-        homePageButton.setOnClickListener(v -> startActivity(new Intent(ApprovalOrderActivity.this, HomePageActivity.class)));
+        homePageButton.setOnClickListener(v -> {
+            startActivity(new Intent(ApprovalOrderActivity.this, HomePageActivity.class));
+            finishAffinity();
+        });
     }
 }

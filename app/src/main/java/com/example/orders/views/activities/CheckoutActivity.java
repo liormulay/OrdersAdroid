@@ -1,13 +1,12 @@
 package com.example.orders.views.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.adapters.ItemsAdapter;
@@ -24,7 +23,7 @@ import io.reactivex.disposables.Disposables;
 import static com.example.orders.views.activities.MakeOrderActivity.ITEMS;
 import static com.example.orders.views.activities.MakeOrderActivity.TOTAL;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class CheckoutActivity extends MenuActivity {
 
     private RecyclerView recyclerViewItems;
 

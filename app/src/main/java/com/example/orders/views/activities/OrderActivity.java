@@ -1,11 +1,10 @@
 package com.example.orders.views.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.example.orders.R;
 import com.example.orders.adapters.ItemsAdapter;
@@ -16,7 +15,7 @@ import java.util.Locale;
 
 import static com.example.orders.views.activities.OrdersActivity.ORDER;
 
-public class OrderActivity extends AppCompatActivity {
+public class OrderActivity extends MenuActivity {
 
     private AppCompatTextView orderDate;
 

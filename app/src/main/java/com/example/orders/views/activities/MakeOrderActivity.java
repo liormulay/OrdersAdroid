@@ -1,13 +1,12 @@
 package com.example.orders.views.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.adapters.ProductsToAddAdapter;
@@ -17,7 +16,7 @@ import com.example.orders.viewmodels.MakeOrderViewModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 
-public class MakeOrderActivity extends AppCompatActivity {
+public class MakeOrderActivity extends MenuActivity {
 
     public static final String ITEMS = "items";
     public static final String TOTAL = "total";
