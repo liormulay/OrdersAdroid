@@ -13,6 +13,10 @@ public class SharedPreferencesUtils {
 
     private static String TOKEN = "TOKEN";
 
+    public static final String ROLE_CUSTOMER="ROLE_CUSTOMER";
+
+    public static final String ROLE_ADMIN="ROLE_ADMIN";
+
     public static void saveToken(Context context, String token) {
         SharedPreferences preferences = context.getSharedPreferences(ORDERS, Context.MODE_PRIVATE);
         preferences.edit().putString(TOKEN, token).apply();

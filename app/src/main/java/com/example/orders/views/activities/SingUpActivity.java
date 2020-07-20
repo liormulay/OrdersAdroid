@@ -62,7 +62,8 @@ public class SingUpActivity extends AppCompatActivity {
             compositeDisposable.add(signUpViewModel.registerAndLogin(new User(username, password), this)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(() -> {
-                                SingUpActivity.this.startActivity(new Intent(SingUpActivity.this, HomePageActivity.class));
+                                SingUpActivity.this.startActivity(new Intent(SingUpActivity.this,
+                                        HomePageActivity.getHomePageClass(this)));
                                 finishAffinity();
                             },
                             throwable -> {

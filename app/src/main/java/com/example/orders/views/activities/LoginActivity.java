@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 compositeDisposable.add(loginViewModel.doLogin(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(() -> {
-                                    Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomePageActivity.getHomePageClass(this));
                                     LoginActivity.this.startActivity(intent);
                                     finishAffinity();
                                 },

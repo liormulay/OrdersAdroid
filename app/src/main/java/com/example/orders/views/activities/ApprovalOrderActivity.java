@@ -35,7 +35,7 @@ public class ApprovalOrderActivity extends MenuActivity {
             }
         }
         homePageButton.setOnClickListener(v -> {
-            startActivity(new Intent(ApprovalOrderActivity.this, HomePageActivity.class));
+            startActivity(new Intent(ApprovalOrderActivity.this, HomePageActivity.getHomePageClass(this)));
             finishAffinity();
         });
     }
