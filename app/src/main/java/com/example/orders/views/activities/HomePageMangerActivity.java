@@ -2,9 +2,6 @@ package com.example.orders.views.activities;
 
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
-
 import com.example.orders.R;
 
 public class HomePageMangerActivity extends HomePageActivity {
