@@ -44,4 +44,9 @@ public class SharedPreferencesUtils {
         return preferences.getString(USERNAME, null);
     }
 
+    public static void clearAll(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(ORDERS, Context.MODE_PRIVATE);
+        preferences.edit().clear().apply();
+    }
+
 }

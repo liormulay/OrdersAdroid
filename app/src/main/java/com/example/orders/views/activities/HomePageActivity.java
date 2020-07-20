@@ -10,7 +10,7 @@ import android.os.Bundle;
 import com.example.orders.R;
 import com.example.orders.utils.SharedPreferencesUtils;
 
-public class HomePageActivity extends AppCompatActivity {
+public class HomePageActivity extends MenuActivity {
 
     private AppCompatTextView welcomeTextView;
 

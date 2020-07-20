@@ -22,4 +22,5 @@
     <string name="username_exist_error_message">username is already exist</string>
     <string name="passwords_not_matches_error_message">The passwords aren\'t matched</string>
     <string name="required_fild_error_message">this field is required</string>
+    <string name="log_out">log out</string>
 </resources>
