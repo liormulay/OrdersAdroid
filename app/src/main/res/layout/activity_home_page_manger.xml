@@ -66,5 +66,16 @@
         android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_new_product_button"
+        android:layout_width="@dimen/home_page_button_size"
+        android:layout_height="@dimen/home_page_button_size"
+        android:text="@string/add_new_product"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/make_order_button"
+        app:layout_constraintStart_toStartOf="@+id/make_order_button"
+        app:layout_constraintTop_toBottomOf="@+id/make_order_button"
+        app:layout_constraintVertical_bias="0.208" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
