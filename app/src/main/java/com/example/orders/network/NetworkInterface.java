@@ -4,10 +4,12 @@ import com.example.orders.model.ItemResponse;
 import com.example.orders.model.ItemsRequestModel;
 import com.example.orders.model.JwtTokenResponse;
 import com.example.orders.model.Order;
+import com.example.orders.model.Product;
 import com.example.orders.model.User;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Single;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -35,5 +37,8 @@ public interface NetworkInterface {
 
     @POST("/order")
     Single<Order> requestBuy(@Header("Authorization") String token, @Body ItemsRequestModel itemsRequestModel);
+
+    @POST("/product")
+    Completable addNewProduct(@Header("Authorization") String token, @Body Product product);
 
 }

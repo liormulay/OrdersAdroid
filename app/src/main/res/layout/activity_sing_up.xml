@@ -13,6 +13,8 @@
         android:layout_marginTop="150dp"
         android:hint="@string/username"
         android:textSize="30sp"
+        android:maxLines="1"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

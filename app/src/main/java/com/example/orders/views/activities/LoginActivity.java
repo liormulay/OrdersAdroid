@@ -51,12 +51,12 @@ public class LoginActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(usernameEditText.getText())) {
                 username = usernameEditText.getText().toString();
             } else {
-                usernameEditText.setError(getString(R.string.required_fild_error_message));
+                usernameEditText.setError(getString(R.string.required_field_error_message));
             }
             if (!TextUtils.isEmpty(passwordEditText.getText())) {
                 password = passwordEditText.getText().toString();
             } else {
-                passwordEditText.setError(getString(R.string.required_fild_error_message));
+                passwordEditText.setError(getString(R.string.required_field_error_message));
             }
             if (username != null && password != null) {
                 progressBar.setVisibility(View.VISIBLE);

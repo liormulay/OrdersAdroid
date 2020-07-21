@@ -79,15 +79,15 @@ public class SingUpActivity extends AppCompatActivity {
         boolean isRequiredEmpty = false;
         if (Strings.isNullOrEmpty(username)) {
             isRequiredEmpty = true;
-            usernameEditText.setError(getString(R.string.required_fild_error_message));
+            usernameEditText.setError(getString(R.string.required_field_error_message));
         }
         if (Strings.isNullOrEmpty(password)) {
             isRequiredEmpty = true;
-            passwordEditText.setError(getString(R.string.required_fild_error_message));
+            passwordEditText.setError(getString(R.string.required_field_error_message));
         }
         if (Strings.isNullOrEmpty(confirmPassword)) {
             isRequiredEmpty = true;
-            confirmPasswordEditText.setError(getString(R.string.required_fild_error_message));
+            confirmPasswordEditText.setError(getString(R.string.required_field_error_message));
         }
         return isRequiredEmpty;
     }

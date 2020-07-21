@@ -18,11 +18,12 @@
     <string name="buy">BUY</string>
     <string name="go_to_home_page">Go to home page</string>
     <string name="confirm_password">Confirm password</string>
-    <string name="submit">submit</string>
+    <string name="submit">SUBMIT</string>
     <string name="username_exist_error_message">username is already exist</string>
     <string name="passwords_not_matches_error_message">The passwords aren\'t matched</string>
-    <string name="required_fild_error_message">this field is required</string>
+    <string name="required_field_error_message">this field is required</string>
     <string name="log_out">log out</string>
     <string name="manager">manager</string>
     <string name="add_new_product">Add new product</string>
+    <string name="product_name">Product Name</string>
 </resources>
