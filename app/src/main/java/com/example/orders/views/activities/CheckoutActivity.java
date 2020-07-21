@@ -60,6 +60,7 @@ public class CheckoutActivity extends MenuActivity {
                                 Intent intent = new Intent(CheckoutActivity.this, ApprovalOrderActivity.class);
                                 intent.putExtra(ORDER, order);
                                 startActivity(intent);
+                                finishAffinity();
                             }, throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG).show()));
         }
     }
