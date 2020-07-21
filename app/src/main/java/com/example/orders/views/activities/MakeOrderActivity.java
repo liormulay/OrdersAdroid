@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.adapters.ProductsToAddAdapter;
-import com.example.orders.utils.FormatUtils;
+import com.example.orders.utils.Utils;
 import com.example.orders.viewmodels.MakeOrderViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -71,7 +71,7 @@ public class MakeOrderActivity extends MenuActivity {
         compositeDisposable.add(productsToAddAdapter.getAddToTotal()
                 .subscribe(addToTotal -> {
                     MakeOrderActivity.this.total += addToTotal;
-                    totalTextView.setText(String.format("total %s", FormatUtils.getRoundPrice(total)));
+                    totalTextView.setText(String.format("total %s", Utils.getRoundPrice(total)));
                 }));
     }
 

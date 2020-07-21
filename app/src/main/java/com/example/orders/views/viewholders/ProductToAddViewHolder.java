@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.model.ItemResponse;
-import com.example.orders.utils.FormatUtils;
+import com.example.orders.utils.Utils;
 import com.google.common.base.Strings;
 import com.squareup.picasso.Picasso;
 
@@ -54,7 +54,7 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(@org.jetbrains.annotations.NotNull ItemResponse itemResponse) {
         this.itemResponse = itemResponse;
-        priceTextView.setText(FormatUtils.getRoundPrice(itemResponse.getPrice()));
+        priceTextView.setText(Utils.getRoundPrice(itemResponse.getPrice()));
         Picasso.get().load(itemResponse.getImageUrl()).into(productImageView);
         productNameTextView.setText(itemResponse.getProductName());
         setListeners();

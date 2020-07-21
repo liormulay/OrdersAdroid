@@ -14,6 +14,7 @@ import androidx.core.widget.ContentLoadingProgressBar;
 
 import com.example.orders.R;
 import com.example.orders.model.User;
+import com.example.orders.utils.Utils;
 import com.example.orders.viewmodels.SignUpViewModel;
 import com.google.common.base.Strings;
 import com.jakewharton.rxbinding2.widget.RxTextView;
@@ -53,13 +54,14 @@ public class SingUpActivity extends AppCompatActivity {
     }
 
     private void onSubmit() {
-        Editable usernameEditable = usernameEditText.getText();
-        Editable passwordEditable = passwordEditText.getText();
-        String username = usernameEditable == null ? null : usernameEditable.toString();
-        String password = passwordEditable == null ? null : passwordEditable.toString();
-        if (!requiredEmpty(username, password) && !isUsernameExist && passwordMatches) {
+        boolean usernameNotEmpty = Utils.validRequired(usernameEditText);
+        boolean passwordNotEmpty = Utils.validRequired(passwordEditText);
+        boolean confirmPasswordNotEmpty = Utils.validRequired(confirmPasswordEditText);
+        boolean requiredNotEmpty = usernameNotEmpty && passwordNotEmpty && confirmPasswordNotEmpty;
+        if (requiredNotEmpty && !isUsernameExist && passwordMatches) {
             progressBar.setVisibility(View.VISIBLE);
-            compositeDisposable.add(signUpViewModel.registerAndLogin(new User(username, password), this)
+            compositeDisposable.add(signUpViewModel.registerAndLogin(
+                    new User(usernameEditText.getText().toString(), passwordEditText.getText().toString()), this)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(() -> {
                                 SingUpActivity.this.startActivity(new Intent(SingUpActivity.this,
@@ -73,24 +75,6 @@ public class SingUpActivity extends AppCompatActivity {
         }
     }
 
-    private boolean requiredEmpty(String username, String password) {
-        Editable confirmPasswordEditable = confirmPasswordEditText.getText();
-        String confirmPassword = confirmPasswordEditable == null ? null : confirmPasswordEditable.toString();
-        boolean isRequiredEmpty = false;
-        if (Strings.isNullOrEmpty(username)) {
-            isRequiredEmpty = true;
-            usernameEditText.setError(getString(R.string.required_field_error_message));
-        }
-        if (Strings.isNullOrEmpty(password)) {
-            isRequiredEmpty = true;
-            passwordEditText.setError(getString(R.string.required_field_error_message));
-        }
-        if (Strings.isNullOrEmpty(confirmPassword)) {
-            isRequiredEmpty = true;
-            confirmPasswordEditText.setError(getString(R.string.required_field_error_message));
-        }
-        return isRequiredEmpty;
-    }
 
     private void validPasswords() {
         compositeDisposable.add(Observable.combineLatest(RxTextView.textChanges(passwordEditText)
@@ -101,6 +85,8 @@ public class SingUpActivity extends AppCompatActivity {
                     passwordMatches = passwordsPair.first.equals(passwordsPair.second);
                     if (!passwordMatches) {
                         confirmPasswordEditText.setError(getString(R.string.passwords_not_matches_error_message));
+                    } else {
+                        confirmPasswordEditText.setError(null);
                     }
                 }));
     }

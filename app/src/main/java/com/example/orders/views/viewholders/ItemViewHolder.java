@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
 import com.example.orders.model.ItemResponse;
-import com.example.orders.utils.FormatUtils;
+import com.example.orders.utils.Utils;
 import com.squareup.picasso.Picasso;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder {
 
@@ -42,6 +39,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         productNameTextView.setText(itemResponse.getProductName());
         quantityTextView.setText(String.valueOf(itemResponse.getQuantity()));
         priceTextView.setText(String.valueOf(itemResponse.getPrice()));
-        totalTextView.setText(FormatUtils.getRoundPrice(itemResponse.getQuantity() * itemResponse.getPrice()));
+        totalTextView.setText(Utils.getRoundPrice(itemResponse.getQuantity() * itemResponse.getPrice()));
     }
 }

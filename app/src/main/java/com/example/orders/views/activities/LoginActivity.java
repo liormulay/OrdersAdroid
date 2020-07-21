@@ -14,6 +14,7 @@ import androidx.core.widget.ContentLoadingProgressBar;
 
 import com.example.orders.R;
 import com.example.orders.model.User;
+import com.example.orders.utils.Utils;
 import com.example.orders.viewmodels.LoginViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -48,15 +49,11 @@ public class LoginActivity extends AppCompatActivity {
     private void initActions() {
         loginButton.setOnClickListener(v -> {
             String username = null, password = null;
-            if (!TextUtils.isEmpty(usernameEditText.getText())) {
+            if (Utils.validRequired(usernameEditText)) {
                 username = usernameEditText.getText().toString();
-            } else {
-                usernameEditText.setError(getString(R.string.required_field_error_message));
             }
-            if (!TextUtils.isEmpty(passwordEditText.getText())) {
+            if (Utils.validRequired(passwordEditText)) {
                 password = passwordEditText.getText().toString();
-            } else {
-                passwordEditText.setError(getString(R.string.required_field_error_message));
             }
             if (username != null && password != null) {
                 progressBar.setVisibility(View.VISIBLE);

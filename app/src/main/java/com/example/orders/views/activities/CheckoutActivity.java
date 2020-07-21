@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.orders.R;
 import com.example.orders.adapters.ItemsAdapter;
 import com.example.orders.model.ItemResponse;
-import com.example.orders.utils.FormatUtils;
+import com.example.orders.utils.Utils;
 import com.example.orders.viewmodels.PurchaseViewModel;
 
 import java.util.List;
@@ -51,7 +51,7 @@ public class CheckoutActivity extends MenuActivity {
         if (extras != null) {
             List<ItemResponse> items = (List<ItemResponse>) extras.getSerializable(ITEMS);
             itemsAdapter.setItems(items);
-            totalTextView.setText(String.format("total %s", FormatUtils.getRoundPrice(extras.getFloat(TOTAL))));
+            totalTextView.setText(String.format("total %s", Utils.getRoundPrice(extras.getFloat(TOTAL))));
             purchaseViewModel = new PurchaseViewModel(items);
             buyTextView.setOnClickListener(v ->
                     disposable = purchaseViewModel.buyRequest(this)
