@@ -57,14 +57,14 @@
         android:hint="@string/price"
         android:textSize="30sp"
         android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintBottom_toTopOf="@+id/submit_text_view"
         app:layout_constraintEnd_toEndOf="@+id/quantity_editText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/quantity_editText"
         app:layout_constraintWidth_percent="0.8" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/submit"
+        android:id="@+id/submit_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

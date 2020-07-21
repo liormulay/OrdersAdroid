@@ -68,7 +68,7 @@ public class CheckoutActivity extends MenuActivity {
     private void findViews() {
         recyclerViewItems = findViewById(R.id.products_recycler);
         totalTextView = findViewById(R.id.totalTextView);
-        buyTextView = findViewById(R.id.submit);
+        buyTextView = findViewById(R.id.submit_text_view);
     }
 
     private void initRecyclerItems() {

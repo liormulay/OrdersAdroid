@@ -123,7 +123,7 @@ public class SingUpActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.password_confirm_edit_text);
-        submitButton = findViewById(R.id.submit_button);
+        submitButton = findViewById(R.id.submit_text_view);
         progressBar = findViewById(R.id.progress_circular);
     }
 

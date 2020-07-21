@@ -63,7 +63,7 @@ public class MakeOrderActivity extends MenuActivity {
     private void findViews() {
         productsRecycler = findViewById(R.id.products_recycler);
         totalTextView = findViewById(R.id.totalTextView);
-        submitTextView = findViewById(R.id.submit);
+        submitTextView = findViewById(R.id.submit_text_view);
     }
 
     private void updateTotal() {
