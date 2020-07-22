@@ -25,7 +25,7 @@ public class Utils {
         return String.valueOf(bigDecimal.floatValue());
     }
 
-    public static boolean validRequired(AppCompatEditText appCompatEditText){
+    public static boolean validRequired(@NotNull AppCompatEditText appCompatEditText){
         if (TextUtils.isEmpty(appCompatEditText.getText())){
             appCompatEditText.setError(appCompatEditText.getContext().getString(R.string.required_field_error_message));
             return false;

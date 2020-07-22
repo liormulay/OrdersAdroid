@@ -3,6 +3,7 @@ package com.example.orders.views.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -11,6 +12,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.example.orders.R;
+import com.example.orders.utils.Utils;
+import com.example.orders.viewmodels.AddNewProductViewModel;
+
+import java.util.Objects;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.Disposables;
 
 public class AddNewProductActivity extends MenuActivity {
 
@@ -25,6 +34,10 @@ public class AddNewProductActivity extends MenuActivity {
     private AppCompatTextView submitTextView;
 
     private Uri productImageUri;
+
+    private AddNewProductViewModel addNewProductViewModel = new AddNewProductViewModel();
+
+    private Disposable disposable = Disposables.disposed();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +54,29 @@ public class AddNewProductActivity extends MenuActivity {
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(intent, 1);
         });
+
+        submitTextView.setOnClickListener(v -> {
+            if (!validRequired()) {
+                return;
+            }
+            String productName = productNameEditText.getText().toString();
+            int productQuantity = Integer.parseInt(productQuantityEditText.getText().toString());
+            float productPrice = Float.parseFloat(productPriceEditText.getText().toString());
+//            disposable = addNewProductViewModel.onSubmit(productName, productQuantity, productPrice,productImageUri)
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(() -> {
+//                        Intent intent = new Intent(AddNewProductActivity.this, AddNewProductActivity.class);
+//                        startActivity(intent);
+//                    }, throwable -> Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG));
+            addNewProductViewModel.onSubmit(productName, productQuantity, productPrice,productImageUri);
+        });
+    }
+
+    private boolean validRequired() {
+        boolean isProductNameFull = Utils.validRequired(productNameEditText);
+        boolean isQuantityFull = Utils.validRequired(productQuantityEditText);
+        boolean isPriceFull = Utils.validRequired(productPriceEditText);
+        return isProductNameFull && isQuantityFull && isPriceFull;
     }
 
     @Override
@@ -58,5 +94,11 @@ public class AddNewProductActivity extends MenuActivity {
         productPriceEditText = findViewById(R.id.quantity_editText);
         productQuantityEditText = findViewById(R.id.price_editText);
         submitTextView = findViewById(R.id.submit_text_view);
+    }
+
+    @Override
+    protected void onDestroy() {
+        disposable.dispose();
+        super.onDestroy();
     }
 }
