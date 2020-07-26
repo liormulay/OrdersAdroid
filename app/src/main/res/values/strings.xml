@@ -26,4 +26,5 @@
     <string name="manager">manager</string>
     <string name="add_new_product">Add new product</string>
     <string name="product_name">Product Name</string>
+    <string name="products_sales_distribution">products sales distribution</string>
 </resources>

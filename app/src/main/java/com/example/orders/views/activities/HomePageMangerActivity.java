@@ -11,6 +11,8 @@ public class HomePageMangerActivity extends HomePageActivity {
 
     private AppCompatButton addNewProductButton;
 
+    private AppCompatButton salesDistributionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +27,13 @@ public class HomePageMangerActivity extends HomePageActivity {
     void findViews() {
         super.findViews();
         addNewProductButton = findViewById(R.id.add_new_product_button);
+        salesDistributionButton = findViewById(R.id.products_sales_distribution_button);
     }
 
     @Override
     void initActions() {
         super.initActions();
         addNewProductButton.setOnClickListener(v -> startActivity(new Intent(HomePageMangerActivity.this, AddNewProductActivity.class)));
+        salesDistributionButton.setOnClickListener(v -> startActivity(new Intent(HomePageMangerActivity.this, ProductsSalesDistributionActivity.class)));
     }
 }
