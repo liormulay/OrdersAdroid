@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintVertical_chainStyle="spread"
-        tools:text="Your order will arrive at 11/08/20220"
+        tools:text="message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_textView"
-        app:srcCompat="@mipmap/ic_approved_order" />
+        tools:src="@drawable/ic_launcher_background"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/homepage_button"

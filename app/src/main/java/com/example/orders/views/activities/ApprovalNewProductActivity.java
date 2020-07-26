@@ -1,16 +1,22 @@
 package com.example.orders.views.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.example.orders.R;
+import org.jetbrains.annotations.NotNull;
 
-public class ApprovalNewProductActivity extends AppCompatActivity {
+import static com.example.orders.views.activities.AddNewProductActivity.PRODUCT_NAME;
+
+public class ApprovalNewProductActivity extends ApprovalActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_approval_new_product);
+    }
+
+
+    @Override
+    protected void setMessage(@NotNull Bundle extras) {
+        String productName = extras.getString(PRODUCT_NAME);
+        this.messageTextView.setText(String.format("%s was added successfully", productName));
     }
 }

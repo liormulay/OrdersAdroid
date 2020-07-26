@@ -3,12 +3,14 @@ package com.example.orders.views.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.ContentLoadingProgressBar;
 
 import com.example.orders.R;
 import com.example.orders.utils.Utils;
@@ -30,11 +32,15 @@ public class AddNewProductActivity extends MenuActivity {
 
     private AppCompatTextView submitTextView;
 
+    private ContentLoadingProgressBar progressBar;
+
     private Uri productImageUri;
 
     private AddNewProductViewModel addNewProductViewModel = new AddNewProductViewModel();
 
     private Disposable disposable = Disposables.disposed();
+
+    public static final String PRODUCT_NAME = "product name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +62,19 @@ public class AddNewProductActivity extends MenuActivity {
             if (!validRequired()) {
                 return;
             }
+            progressBar.setVisibility(View.VISIBLE);
             String productName = productNameEditText.getText().toString();
             int productQuantity = Integer.parseInt(productQuantityEditText.getText().toString());
             float productPrice = Float.parseFloat(productPriceEditText.getText().toString());
-            disposable = addNewProductViewModel.onSubmit(this,productName, productQuantity, productPrice,productImageUri)
+            disposable = addNewProductViewModel.onSubmit(this, productName, productQuantity, productPrice, productImageUri)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(() -> {
+                        progressBar.setVisibility(View.GONE);
                         Intent intent = new Intent(AddNewProductActivity.this, ApprovalNewProductActivity.class);
+                        intent.putExtra(PRODUCT_NAME, productName);
                         startActivity(intent);
                     }, throwable -> {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG).show();
                         throwable.printStackTrace();
                     });
@@ -93,6 +103,7 @@ public class AddNewProductActivity extends MenuActivity {
         productQuantityEditText = findViewById(R.id.quantity_editText);
         productPriceEditText = findViewById(R.id.price_editText);
         submitTextView = findViewById(R.id.submit_text_view);
+        progressBar = findViewById(R.id.progress_circular);
     }
 
     @Override
