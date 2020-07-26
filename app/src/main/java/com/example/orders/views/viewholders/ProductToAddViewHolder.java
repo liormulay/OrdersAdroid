@@ -55,7 +55,10 @@ public class ProductToAddViewHolder extends RecyclerView.ViewHolder {
     public void bindData(@org.jetbrains.annotations.NotNull ItemResponse itemResponse) {
         this.itemResponse = itemResponse;
         priceTextView.setText(Utils.getRoundPrice(itemResponse.getPrice()));
-        Picasso.get().load(itemResponse.getImageUrl()).into(productImageView);
+        String imageUrl = itemResponse.getImageUrl();
+        if (imageUrl != null) {
+            Picasso.get().load(imageUrl).into(productImageView);
+        }
         productNameTextView.setText(itemResponse.getProductName());
         setListeners();
     }

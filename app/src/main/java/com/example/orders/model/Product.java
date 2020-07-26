@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
+    private static final long serialVersionUID = -4814365604368308880L;
+
     private String productName;
 
     private float price;
@@ -13,7 +15,7 @@ public class Product implements Serializable {
      */
     private int stockQuantity;
 
-    private String ImageUrl;
+    private String imageUrl;
 
     public Product() {
     }
@@ -22,7 +24,7 @@ public class Product implements Serializable {
         this.productName = productName;
         this.price = price;
         this.stockQuantity = stockQuantity;
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public String getProductName() {
@@ -50,10 +52,10 @@ public class Product implements Serializable {
     }
 
     public String getImageUrl() {
-        return ImageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 }

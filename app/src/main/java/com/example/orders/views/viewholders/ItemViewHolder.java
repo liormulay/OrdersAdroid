@@ -35,7 +35,10 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindData(ItemResponse itemResponse) {
-        Picasso.get().load(itemResponse.getImageUrl()).into(productImageView);
+        String imageUrl = itemResponse.getImageUrl();
+        if (imageUrl != null) {
+            Picasso.get().load(imageUrl).into(productImageView);
+        }
         productNameTextView.setText(itemResponse.getProductName());
         quantityTextView.setText(String.valueOf(itemResponse.getQuantity()));
         priceTextView.setText(String.valueOf(itemResponse.getPrice()));
