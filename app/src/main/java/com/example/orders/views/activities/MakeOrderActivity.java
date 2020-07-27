@@ -78,7 +78,7 @@ public class MakeOrderActivity extends MenuActivity {
     private void getProducts() {
         compositeDisposable.add(makeOrderViewModel.getProducts(this)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(itemResponses -> productsToAddAdapter.setItems(itemResponses)));
+                .subscribe(itemResponses -> productsToAddAdapter.setProducts(itemResponses)));
     }
 
     private void initProductsRecycler() {

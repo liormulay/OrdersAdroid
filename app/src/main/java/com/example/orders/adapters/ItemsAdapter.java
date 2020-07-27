@@ -5,27 +5,18 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.R;
-import com.example.orders.model.ItemResponse;
+import com.example.orders.views.viewholders.BaseProductViewHolder;
 import com.example.orders.views.viewholders.ItemViewHolder;
 
-import java.util.List;
-
-public class ItemsAdapter extends RecyclerView.Adapter<ItemViewHolder> {
+public class ItemsAdapter extends BaseProductsAdapter {
 
     private Context context;
 
-    private List<ItemResponse> items;
-
     public ItemsAdapter(Context context) {
+        super();
         this.context = context;
-    }
-
-    public void setItems(List<ItemResponse> items) {
-        this.items = items;
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -35,12 +26,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        holder.bindData(items.get(position));
+    public void onBindViewHolder(@NonNull BaseProductViewHolder holder, int position) {
+        holder.bindData(products.get(position));
     }
 
-    @Override
-    public int getItemCount() {
-        return items == null ? 0 : items.size();
-    }
 }

@@ -42,7 +42,7 @@ public class OrderActivity extends MenuActivity {
     private void bindItems(Order order) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", new Locale("he"));
         orderDate.setText(dateFormat.format(order.getOrderDate()));
-        itemsAdapter.setItems(order.getItems());
+        itemsAdapter.setProducts(order.getItems());
         total.setText(String.format("total %s", order.getTotal()));
     }
 

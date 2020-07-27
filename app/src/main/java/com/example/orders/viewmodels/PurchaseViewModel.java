@@ -26,10 +26,13 @@ public class PurchaseViewModel extends ViewModel {
     }
 
     public Single<Order> buyRequest(Context context) {
-        List<ItemRequest> itemsRequest = new ArrayList<>(items);
+        List<ItemRequest> itemsRequest = new ArrayList<>();
+        for (ItemResponse item : items) {
+            itemsRequest.add(new ItemRequest(item.getProductId(), item.getQuantity()));
+        }
         ItemsRequestModel itemsRequestModel = new ItemsRequestModel(itemsRequest);
         return NetworkClient.getNetworkInterface()
-                .requestBuy(SharedPreferencesUtils.retrieveToken(context),itemsRequestModel)
+                .requestBuy(SharedPreferencesUtils.retrieveToken(context), itemsRequestModel)
                 .subscribeOn(Schedulers.io());
     }
 }

@@ -39,7 +39,7 @@
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
@@ -88,7 +88,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/quantity_title"
                 app:layout_constraintStart_toEndOf="@+id/multiply_textView"
                 app:layout_constraintTop_toTopOf="@+id/quantity_title"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginStart="7dp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/price_textView"
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/equal"
                 android:textSize="@dimen/item_details_text_size"
-                android:layout_marginLeft="7dp"
+                android:layout_marginStart="7dp"
                 app:layout_constraintBottom_toBottomOf="@+id/price_textView"
                 app:layout_constraintStart_toEndOf="@+id/price_title" />
 
@@ -117,7 +117,7 @@
                 android:padding="@dimen/padding_item_title"
                 android:text="@string/total"
                 android:textSize="@dimen/item_details_text_size"
-                android:layout_marginLeft="7dp"
+                android:layout_marginStart="7dp"
                 app:layout_constraintBottom_toBottomOf="@+id/quantity_title"
                 app:layout_constraintStart_toEndOf="@+id/equal_textView"
                 app:layout_constraintTop_toTopOf="@+id/quantity_title" />
