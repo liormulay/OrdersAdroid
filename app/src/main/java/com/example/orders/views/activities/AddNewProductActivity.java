@@ -73,6 +73,7 @@ public class AddNewProductActivity extends MenuActivity {
                         Intent intent = new Intent(AddNewProductActivity.this, ApprovalNewProductActivity.class);
                         intent.putExtra(PRODUCT_NAME, productName);
                         startActivity(intent);
+                        finishAffinity();
                     }, throwable -> {
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG).show();
