@@ -5,7 +5,7 @@ import com.example.orders.model.ItemsRequestModel;
 import com.example.orders.model.JwtTokenResponse;
 import com.example.orders.model.Order;
 import com.example.orders.model.Product;
-import com.example.orders.model.ProductSaleModel;
+import com.example.orders.model.ProductSalesModel;
 import com.example.orders.model.User;
 
 import java.util.List;
@@ -43,6 +43,6 @@ public interface NetworkInterface {
     Completable addNewProduct(@Header("Authorization") String token, @Body Product product);
 
     @GET("/productsOrderBySale")
-    Single<List<ProductSaleModel>> getProductsOrderBySale(@Header("Authorization") String token);
+    Single<List<ProductSalesModel>> getProductsOrderBySale(@Header("Authorization") String token);
 
 }

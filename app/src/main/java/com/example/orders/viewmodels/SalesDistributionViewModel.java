@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.orders.model.ProductSaleModel;
+import com.example.orders.model.ProductSalesModel;
 import com.example.orders.network.NetworkClient;
 import com.example.orders.utils.SharedPreferencesUtils;
 
@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SalesDistributionViewModel extends ViewModel {
 
-    public Single<List<ProductSaleModel>> getProductsOrderBySale(Context context) {
+    public Single<List<ProductSalesModel>> getProductsOrderBySale(Context context) {
         return NetworkClient.getNetworkInterface()
                 .getProductsOrderBySale(SharedPreferencesUtils.retrieveToken(context))
                 .subscribeOn(Schedulers.io());

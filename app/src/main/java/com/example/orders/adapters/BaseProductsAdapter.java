@@ -1,6 +1,5 @@
 package com.example.orders.adapters;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.orders.model.ProductBaseModel;
