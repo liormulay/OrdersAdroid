@@ -75,6 +75,7 @@
                 android:digits="0123456789"
                 android:inputType="number"
                 android:text="0"
+                android:imeOptions="actionDone"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="@+id/plus_button"
                 app:layout_constraintStart_toEndOf="@+id/minus_button"
