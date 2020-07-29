@@ -21,7 +21,7 @@ public class SalesProductViewHolder extends BaseProductViewHolder {
     @Override
     public void bindData(ProductBaseModel model) {
         super.bindData(model);
-        int totalSales = ((ProductSalesModel) model).getQuantity();
+        int totalSales = ((ProductSalesModel) model).getSalesQuantity();
         soldTextView.setText(String.format("total sales: %s", totalSales));
     }
 }
