@@ -21,7 +21,7 @@ import retrofit2.http.Path;
 public interface NetworkInterface {
 
 
-    @GET("/is_username_exist/{username}")
+    @GET("/is-username-exist/{username}")
     Single<Boolean> isUsernameExist(@Path("username") String username);
 
     @POST("/register")
@@ -33,7 +33,7 @@ public interface NetworkInterface {
     @GET("/orders")
     Single<List<Order>> getOrders(@Header("Authorization") String token);
 
-    @GET("/request_items")
+    @GET("/request-items")
     Single<List<ItemResponse>> getProducts(@Header("Authorization") String token);
 
     @POST("/order")
@@ -42,7 +42,7 @@ public interface NetworkInterface {
     @POST("/product")
     Completable addNewProduct(@Header("Authorization") String token, @Body Product product);
 
-    @GET("/productsOrderBySale")
+    @GET("/products-with-sales")
     Single<List<ProductSalesModel>> getProductsOrderBySale(@Header("Authorization") String token);
 
     @GET("/check-token")
