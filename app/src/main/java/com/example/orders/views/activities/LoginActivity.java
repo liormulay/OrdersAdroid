@@ -41,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginViewModel = new LoginViewModel();
+        compositeDisposable.add(loginViewModel.isLoggedIn(this)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::goToHomePage, throwable -> {}));
         findViews();
         initActions();
 
@@ -60,11 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User(username, password);
                 compositeDisposable.add(loginViewModel.doLogin(user, this)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(() -> {
-                                    Intent intent = new Intent(LoginActivity.this, HomePageActivity.getHomePageClass(this));
-                                    LoginActivity.this.startActivity(intent);
-                                    finishAffinity();
-                                },
+                        .subscribe(this::goToHomePage,
                                 throwable -> {
                                     Toast.makeText(LoginActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);
@@ -73,6 +72,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         signUpTextView.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SingUpActivity.class)));
+    }
+
+    private void goToHomePage() {
+        Intent intent = new Intent(LoginActivity.this, HomePageActivity.getHomePageClass(this));
+        LoginActivity.this.startActivity(intent);
+        finishAffinity();
     }
 
     private void findViews() {

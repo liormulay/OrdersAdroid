@@ -45,4 +45,6 @@ public interface NetworkInterface {
     @GET("/productsOrderBySale")
     Single<List<ProductSalesModel>> getProductsOrderBySale(@Header("Authorization") String token);
 
+    @GET("/check-token")
+    Completable checkToken(@Header("Authorization") String token);
 }
