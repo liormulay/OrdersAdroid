@@ -3,6 +3,7 @@ package com.example.orders.views.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -25,6 +26,13 @@ public class HomePageActivity extends MenuActivity {
         findViews();
         initWelcomeMessage();
         initActions();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.getItem(0).setVisible(false);
+        return true;
     }
 
     int getLayoutResourceId() {

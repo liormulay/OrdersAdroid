@@ -29,4 +29,5 @@
     <string name="products_sales_distribution">products details</string>
     <string name="quantity_capital">Quantity</string>
     <string name="price_capital">Price</string>
+    <string name="homepage">homepage</string>
 </resources>
