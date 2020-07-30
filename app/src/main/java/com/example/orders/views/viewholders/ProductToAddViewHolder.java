@@ -48,7 +48,7 @@ public class ProductToAddViewHolder extends BaseProductViewHolder {
     public void bindData(ProductBaseModel model) {
         super.bindData(model);
         this.itemResponse = (ItemResponse) model;
-        priceTextView.setText(Utils.getRoundPrice(itemResponse.getPrice()));
+        priceTextView.setText(String.format("%s $", Utils.getRoundPrice(itemResponse.getPrice())));
         setListeners();
     }
 

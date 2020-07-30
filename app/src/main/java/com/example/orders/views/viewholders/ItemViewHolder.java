@@ -31,8 +31,8 @@ public class ItemViewHolder extends BaseProductViewHolder {
         super.bindData(model);
         ItemResponse itemResponse = (ItemResponse) model;
         quantityTextView.setText(String.valueOf(itemResponse.getQuantity()));
-        priceTextView.setText(String.valueOf(itemResponse.getPrice()));
-        totalTextView.setText(Utils.getRoundPrice(itemResponse.getQuantity() * itemResponse.getPrice()));
+        priceTextView.setText(String.format("%s $", itemResponse.getPrice()));
+        totalTextView.setText(String.format("%s $", Utils.getRoundPrice(itemResponse.getQuantity() * itemResponse.getPrice())));
     }
 
 }

@@ -11,17 +11,25 @@ import com.example.orders.model.ProductSalesModel;
 
 public class SalesProductViewHolder extends BaseProductViewHolder {
 
-    private AppCompatTextView soldTextView;
+    private AppCompatTextView stockQuantityTextView;
+
+    private AppCompatTextView priceTextView;
+
+    private AppCompatTextView salesTextView;
 
     public SalesProductViewHolder(@NonNull View itemView) {
         super(itemView);
-        soldTextView = itemView.findViewById(R.id.total_sales_textView);
+        stockQuantityTextView = itemView.findViewById(R.id.stock_quantity_textView);
+        priceTextView = itemView.findViewById(R.id.price_textView);
+        salesTextView = itemView.findViewById(R.id.total_sales_textView);
     }
 
     @Override
     public void bindData(ProductBaseModel model) {
         super.bindData(model);
-        int totalSales = ((ProductSalesModel) model).getSalesQuantity();
-        soldTextView.setText(String.format("total sales: %s", totalSales));
+        ProductSalesModel productSalesModel = (ProductSalesModel) model;
+        stockQuantityTextView.setText(String.format("quantity in the stock: %s", productSalesModel.getStockQuantity()));
+        priceTextView.setText(String.format("price: %s $", productSalesModel.getPrice()));
+        salesTextView.setText(String.format("total sales: %s", productSalesModel.getSalesQuantity()));
     }
 }

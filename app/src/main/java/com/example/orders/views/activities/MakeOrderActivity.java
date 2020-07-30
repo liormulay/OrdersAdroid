@@ -67,11 +67,11 @@ public class MakeOrderActivity extends MenuActivity {
     }
 
     private void updateTotal() {
-        totalTextView.setText(String.format("total %s", total));
+        totalTextView.setText(String.format("total %s $", total));
         compositeDisposable.add(productsToAddAdapter.getAddToTotal()
                 .subscribe(addToTotal -> {
                     MakeOrderActivity.this.total += addToTotal;
-                    totalTextView.setText(String.format("total %s", Utils.getRoundPrice(total)));
+                    totalTextView.setText(String.format("total %s $", Utils.getRoundPrice(total)));
                 }));
     }
 

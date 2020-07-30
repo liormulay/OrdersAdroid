@@ -43,7 +43,7 @@ public class OrderActivity extends MenuActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", new Locale("he"));
         orderDate.setText(dateFormat.format(order.getOrderDate()));
         itemsAdapter.setProducts(order.getItems());
-        total.setText(String.format("total %s", order.getTotal()));
+        total.setText(String.format("total %s $", order.getTotal()));
     }
 
     private void initRecyclerItems() {
