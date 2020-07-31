@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activities.ProductsSalesDistributionActivity"></activity>
+        <activity android:name=".views.activities.ProductsDetailsActivity"></activity>
         <activity android:name=".views.activities.ApprovalActivity" />
         <activity android:name=".views.activities.ApprovalNewProductActivity" />
         <activity android:name=".views.activities.AddNewProductActivity" />

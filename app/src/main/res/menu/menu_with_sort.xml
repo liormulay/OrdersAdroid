@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/logout_item"
+        android:orderInCategory="100"
+        android:title="@string/log_out"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_icon"
+        android:icon="@mipmap/ic_up_and_down_arrows_foreground"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/sort_by_quantity"
+                android:title="@string/sort_by_quantity"
+                app:showAsAction="never">
+                <menu>
+                    <item
+                        android:id="@+id/sort_by_quantity_ascendant"
+                        android:title="@string/ascendant"
+                        app:showAsAction="never" />
+                    <item
+                        android:id="@+id/sort_by_quantity_descendant"
+                        android:title="@string/descendant"
+                        app:showAsAction="never" />
+                </menu>
+            </item>
+
+            <item
+                android:id="@+id/sort_by_sales"
+                android:title="@string/sort_by_sales"
+                app:showAsAction="never">
+                <menu>
+                    <item
+                        android:id="@+id/sort_by_sales_ascendant"
+                        android:title="@string/ascendant"
+                        app:showAsAction="never" />
+                    <item
+                        android:id="@+id/sort_by_sales_descendant"
+                        android:title="@string/descendant"
+                        app:showAsAction="never" />
+                </menu>
+            </item>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/homepage_item"
+        android:icon="@mipmap/ic_home_page_foreground"
+        android:title="@string/homepage"
+        app:showAsAction="ifRoom" />
+
+</menu>

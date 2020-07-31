@@ -30,4 +30,9 @@
     <string name="quantity_capital">Quantity</string>
     <string name="price_capital">Price</string>
     <string name="homepage">homepage</string>
+    <string name="sort">sort</string>
+    <string name="sort_by_quantity">sort by quantity</string>
+    <string name="ascendant">ascendant</string>
+    <string name="descendant">descendant</string>
+    <string name="sort_by_sales">sort by sales</string>
 </resources>

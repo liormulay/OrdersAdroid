@@ -34,6 +34,6 @@ public class HomePageMangerActivity extends HomePageActivity {
     void initActions() {
         super.initActions();
         addNewProductButton.setOnClickListener(v -> startActivity(new Intent(HomePageMangerActivity.this, AddNewProductActivity.class)));
-        salesDistributionButton.setOnClickListener(v -> startActivity(new Intent(HomePageMangerActivity.this, ProductsSalesDistributionActivity.class)));
+        salesDistributionButton.setOnClickListener(v -> startActivity(new Intent(HomePageMangerActivity.this, ProductsDetailsActivity.class)));
     }
 }

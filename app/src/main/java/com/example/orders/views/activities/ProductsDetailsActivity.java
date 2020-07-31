@@ -1,6 +1,8 @@
 package com.example.orders.views.activities;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;
 
-public class ProductsSalesDistributionActivity extends MenuActivity {
+public class ProductsDetailsActivity extends MenuActivity {
 
     private SalesDistributionViewModel viewModel = new SalesDistributionViewModel();
 
@@ -39,6 +41,13 @@ public class ProductsSalesDistributionActivity extends MenuActivity {
         productsRecycler.setHasFixedSize(true);
         productsRecycler.setLayoutManager(new LinearLayoutManager(this));
         productsRecycler.setAdapter(productsAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_with_sort, menu);
+        return true;
     }
 
     @Override

@@ -16,8 +16,6 @@ import com.example.orders.utils.SharedPreferencesUtils;
 
 public abstract class MenuActivity extends AppCompatActivity {
 
-    Menu menu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +26,6 @@ public abstract class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_layout, menu);
-        this.menu = menu;
         return true;
     }
 
@@ -38,9 +35,10 @@ public abstract class MenuActivity extends AppCompatActivity {
             case R.id.logout_item:
                 startActivity(new Intent(MenuActivity.this, LoginActivity.class));
                 SharedPreferencesUtils.clearAll(this);
-                break;
+                return true;
             case R.id.homepage_item:
                 startActivity(new Intent(MenuActivity.this, HomePageMangerActivity.getHomePageClass(this)));
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
