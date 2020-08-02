@@ -16,6 +16,9 @@ public abstract class BaseProductsAdapter extends RecyclerView.Adapter<BaseProdu
         notifyDataSetChanged();
     }
 
+    public List<? extends ProductBaseModel> getProducts() {
+        return products;
+    }
 
     @Override
     public int getItemCount() {

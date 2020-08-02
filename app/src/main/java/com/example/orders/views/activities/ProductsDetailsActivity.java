@@ -3,7 +3,9 @@ package com.example.orders.views.activities;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,8 +14,7 @@ import com.example.orders.adapters.SalesProductsAdapter;
 import com.example.orders.viewmodels.SalesDistributionViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.disposables.Disposables;
+import io.reactivex.disposables.CompositeDisposable;
 
 public class ProductsDetailsActivity extends MenuActivity {
 
@@ -23,7 +24,7 @@ public class ProductsDetailsActivity extends MenuActivity {
 
     private SalesProductsAdapter productsAdapter;
 
-    private Disposable disposable = Disposables.disposed();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +33,9 @@ public class ProductsDetailsActivity extends MenuActivity {
         productsRecycler = findViewById(R.id.products_recycler);
         productsAdapter = new SalesProductsAdapter(this);
         initRecycler();
-        disposable = viewModel.getProductsOrderBySale(this)
+        compositeDisposable.add(viewModel.getProductsOrderBySale(this)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(productSalesModels -> productsAdapter.setProducts(productSalesModels));
+                .subscribe(productSalesModels -> productsAdapter.setProducts(productSalesModels)));
     }
 
     private void initRecycler() {
@@ -51,8 +52,35 @@ public class ProductsDetailsActivity extends MenuActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.sort_by_quantity_ascendant:
+                compositeDisposable.add(viewModel.sortByQuantityAscendant(productsAdapter.getProducts())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(products -> productsAdapter.setProducts(products)));
+                return true;
+            case R.id.sort_by_quantity_descendant:
+                compositeDisposable.add(viewModel.sortByQuantityDescendant(productsAdapter.getProducts())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(products -> productsAdapter.setProducts(products)));
+                return true;
+            case R.id.sort_by_sales_ascendant:
+                compositeDisposable.add(viewModel.sortBySalesAscendant(productsAdapter.getProducts())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(products -> productsAdapter.setProducts(products)));
+                return true;
+            case R.id.sort_by_sales_descendant:
+                compositeDisposable.add(viewModel.sortBySalesDescendant(productsAdapter.getProducts())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(products -> productsAdapter.setProducts(products)));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onDestroy() {
-        disposable.dispose();
+        compositeDisposable.clear();
         super.onDestroy();
     }
 }

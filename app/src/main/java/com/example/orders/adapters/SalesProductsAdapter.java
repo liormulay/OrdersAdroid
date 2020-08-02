@@ -28,4 +28,6 @@ public class SalesProductsAdapter extends BaseProductsAdapter {
     public void onBindViewHolder(@NonNull BaseProductViewHolder holder, int position) {
         holder.bindData(products.get(position));
     }
+
+
 }
