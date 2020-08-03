@@ -1,5 +1,6 @@
 package com.example.orders.network;
 
+import com.example.orders.model.ItemRequest;
 import com.example.orders.model.ItemResponse;
 import com.example.orders.model.ItemsRequestModel;
 import com.example.orders.model.JwtTokenResponse;
@@ -16,6 +17,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface NetworkInterface {
@@ -44,6 +46,9 @@ public interface NetworkInterface {
 
     @GET("/products-with-sales")
     Single<List<ProductSalesModel>> getProductsOrderBySale(@Header("Authorization") String token);
+
+    @PUT("/add-quantity-to-stock")
+    Completable addQuantityToStock(@Header("Authorization") String token, @Body ItemRequest itemRequest);
 
     @GET("/check-token")
     Completable checkToken(@Header("Authorization") String token);

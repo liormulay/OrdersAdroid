@@ -35,4 +35,6 @@
     <string name="ascendant">ascendant</string>
     <string name="descendant">descendant</string>
     <string name="sort_by_sales">sort by sales</string>
+    <string name="add_to_stock">add to\nstock</string>
+    <string name="enter_number_of_items_that_you_want_to_add">Enter number of items that you want to add</string>
 </resources>

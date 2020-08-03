@@ -50,7 +50,7 @@
                 android:layout_marginTop="4dp"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.288"
+                app:layout_constraintHorizontal_bias="0.15"
                 app:layout_constraintStart_toEndOf="@+id/productImageView"
                 app:layout_constraintTop_toTopOf="@+id/productImageView"
                 tools:text="quantity in stock: 100" />
@@ -73,6 +73,17 @@
                 app:layout_constraintBottom_toTopOf="@+id/product_name_textView"
                 app:layout_constraintStart_toStartOf="@+id/stock_quantity_textView"
                 tools:text="total sales: 67" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_to_stock_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_stock"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="10dp"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
