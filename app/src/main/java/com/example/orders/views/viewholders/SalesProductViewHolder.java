@@ -37,7 +37,7 @@ public class SalesProductViewHolder extends BaseProductViewHolder {
     public void bindData(ProductBaseModel model) {
         super.bindData(model);
         ProductSalesModel productSalesModel = (ProductSalesModel) model;
-        stockQuantityTextView.setText(String.format("quantity in the stock: %s", productSalesModel.getStockQuantity()));
+        stockQuantityTextView.setText(String.format("quantity in stock: %s", productSalesModel.getStockQuantity()));
         priceTextView.setText(String.format("price: %s $", productSalesModel.getPrice()));
         salesTextView.setText(String.format("total sales: %s", productSalesModel.getSalesQuantity()));
         addToStockButton.setOnClickListener(v -> productIdClicked.onNext(model.getProductId()));
