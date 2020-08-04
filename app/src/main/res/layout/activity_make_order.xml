@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="20sp"
         android:gravity="center"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:textColor="#ffffff"
         android:text="@string/make_an_order"/>
 

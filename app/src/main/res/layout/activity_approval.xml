@@ -39,5 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/approval_image"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:background="@color/colorAccent"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

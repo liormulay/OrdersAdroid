@@ -51,7 +51,7 @@ public class CheckoutActivity extends MenuActivity {
         if (extras != null) {
             List<ItemResponse> items = (List<ItemResponse>) extras.getSerializable(ITEMS);
             itemsAdapter.setProducts(items);
-            totalTextView.setText(String.format("total %s", Utils.getRoundPrice(extras.getFloat(TOTAL))));
+            totalTextView.setText(String.format("total %s $", Utils.getRoundPrice(extras.getFloat(TOTAL))));
             purchaseViewModel = new PurchaseViewModel(items);
             buyTextView.setOnClickListener(v ->
                     disposable = purchaseViewModel.buyRequest(this)
