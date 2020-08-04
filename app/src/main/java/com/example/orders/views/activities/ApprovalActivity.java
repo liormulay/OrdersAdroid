@@ -36,7 +36,7 @@ public abstract class ApprovalActivity extends MenuActivity {
     }
 
     protected int getApprovalImage() {
-        return R.mipmap.ic_approval;
+        return R.mipmap.ic_approval_foreground;
     }
 
     private void findViews() {
