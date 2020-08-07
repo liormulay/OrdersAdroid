@@ -1,15 +1,13 @@
 package com.example.orders.views.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.orders.R;
 import com.example.orders.utils.SharedPreferencesUtils;
@@ -35,6 +33,7 @@ public abstract class MenuActivity extends AppCompatActivity {
             case R.id.logout_item:
                 startActivity(new Intent(MenuActivity.this, LoginActivity.class));
                 SharedPreferencesUtils.clearAll(this);
+                finishAffinity();
                 return true;
             case R.id.homepage_item:
                 startActivity(new Intent(MenuActivity.this, HomePageMangerActivity.getHomePageClass(this)));
