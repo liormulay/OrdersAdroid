@@ -21,8 +21,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/make_order_button"
-        android:layout_width="@dimen/home_page_button_size"
-        android:layout_height="@dimen/home_page_button_size"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
         android:text="@string/make_order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/see_orders_button"
@@ -30,23 +31,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315"
-        android:background="@color/colorAccent"
-        android:textColor="#ffffff"
+        android:background="@null"
+        android:textColor="@color/colorPrimary"
+        android:drawableTop="@mipmap/ic_new_cart_foreground"
         android:textStyle="bold"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/see_orders_button"
-        android:layout_width="@dimen/home_page_button_size"
-        android:layout_height="@dimen/home_page_button_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/see_orders"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="@+id/make_order_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toEndOf="@id/make_order_button"
         app:layout_constraintTop_toTopOf="@+id/make_order_button"
         app:layout_constraintVertical_bias="0.315"
-        android:background="@color/colorAccent"
-        android:textColor="#ffffff"
+        android:background="@null"
+        android:textColor="@color/colorPrimary"
+        android:drawableTop="@mipmap/ic_details_foreground"
         android:textStyle="bold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
