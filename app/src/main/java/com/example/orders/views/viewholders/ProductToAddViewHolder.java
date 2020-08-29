@@ -56,14 +56,14 @@ public class ProductToAddViewHolder extends BaseProductViewHolder {
     private void setListeners() {
         plusButton.setOnClickListener(v -> {
             Editable text = quantityEditText.getText();
-            int quantity = (text == null || Strings.isNullOrEmpty(text.toString())) ? 0 : Integer.parseInt(text.toString());
+            int quantity = (text == null || Strings.isNullOrEmpty(text.toString())) ? prevQuantity : Integer.parseInt(text.toString());
             ++quantity;
             quantityEditText.setText(String.valueOf(quantity));
         });
 
         minusButton.setOnClickListener(v -> {
             Editable text = quantityEditText.getText();
-            int quantity = text == null ? 0 : Integer.parseInt(text.toString());
+            int quantity = text == null ? prevQuantity : Integer.parseInt(text.toString());
             --quantity;
             quantityEditText.setText(String.valueOf(quantity));
         });
